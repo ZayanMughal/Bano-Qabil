@@ -1,120 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .intro {
-            height: 400px;
-            width: 1100px;
-            border: 1px black;
-            border-style: solid;
-            display: block;
-        }
+    <script>
+        function ageCalculator() {
+            var userinput = document.getElementById("DOB").value;
+            var dob = new Date(userinput);
+            if (userinput == null || userinput == '') {
+                document.getElementById("message").innerHTML = "**Choose a date please!";
+                return false;
+            } else {
 
-        .box1 {
-            height: 100px;
-            width: 1100px;
-            display: block;
-            text-align: center;
-        }
+                //calculate month difference from current date in time  
+                var month_diff = Date.now() - dob.getTime();
 
-        .box2 {
-            height: 200px;
-            width: 200px;
-            border: 1px black;
-            border-style: solid;
-            margin-left: 80px;
-            margin-bottom: 30px;
-            display: inline-block;
-            float: left;
-        }
+                //convert the calculated difference in date format  
+                var age_dt = new Date(month_diff);
 
-        .box3 {
-            height: 100px;
-            width: 500px;
-            display: inline-block;
-            margin-left: 200px;
-            font-size: 35px;
-        }
+                //extract year from date      
+                var year = age_dt.getFullYear();
 
-        .proj {
-            height: 500px;
-            width: 1100px;
-            display: block;
-            border: 1px;
-            border-style: solid;
-            
-        }
+                var month =  age_dt.getMonth();
 
-        .box {
-            height: 100px;
-            width: 1100px;
-            display: block;
-            text-align: center;
-            font-size: 25px;
-        }
+                var day = age_dt.getDay();
 
-        .css {
-            height: 150px;
-            width: 250px;
-            border: 1px;
-            border-style: solid;
-            text-align: center;
-            margin-left: 80px;
-            display: inline-block;
-            font-size: 25px;
-        }
-        .gaps {
-            height: 40px;
-            width: 1100px;
-        }
+                //now calculate the age of the user  
+                var age = Math.abs(year - 1970);
+                
+             
 
-        .work {
-            height: 100px;
-            width: 1100px;
-            border: 2px;
-            border-style: solid;
-            text-align: center;
-            font-size: 25px;
-
-        }
-    </style>
+                //display the calculated age  
+                return document.getElementById("result").innerHTML =
+                    "Age is: " + age + " years. " + month + " months " + day + " days ";
+            }
+        }  
+    </script>
 </head>
 
 <body>
-    <div class="intro">
-        <div class="box1">
-            <h1>I Am Zayan. I am the student of webdeveloping</h1>
-        </div>
-        <div class="box2"> <img src="./mighty-beautiful-lion-resting-african-savannah-black-white-kenya-96042281.jpg" alt="" width="200px" height="200px" > </div>
-        <div class="box3">
-            <p>GitHub-Instagram-LinkedIn</p>
-        </div>
-    </div>
-    <br>
-    <div class="proj">
-        <div class="box">
-            <h2>Project</h2>
-        </div>
-        <div class="css"> <b>Sample Website</b> <p>It is sample of my skills blalalala.</p> </div>
-        <div class="css"> <b>Sample Website</b> <p>It is sample of my skills blalalala.</p> </div>
-        <div class="css"> <b>Sample Website</b> <p>It is sample of my skills blalalala.</p> </div>
+    <center>
+        <h2 style="color: 32A80F" align="center"> Calculate Age from Date of Birth <br> <br> </h2>
 
-        <div class="gaps" ></div>
- 
-        <div class="css"> <b>Sample Website</b> <p>It is sample of my skills blalalala.</p> </div>
-        <div class="css"> <b>Sample Website</b> <p>It is sample of my skills blalalala.</p> </div>
-        <div class="css"> <b>Sample Website</b> <p>It is sample of my skills blalalala.</p> </div>
+        <!-- Choose a date and enter in input field -->
+        <b> Enter Date of Birth: <input type=date id=DOB> </b>
+        <span id="message" style="color:red"> </span> <br><br>
 
-    </div>
-<br />
-    <div class="work">
-<h2>Work Experience</h2>
-    </div>
+        <!-- Choose a date and enter in input field -->
+        <button type="submit" onclick="ageCalculator()"> Calculate age </button> <br><br>
+        <h3 style="color:32A80F" id="result" align="center"></h3>
+    </center>
 </body>
 
-</html>
+</html
